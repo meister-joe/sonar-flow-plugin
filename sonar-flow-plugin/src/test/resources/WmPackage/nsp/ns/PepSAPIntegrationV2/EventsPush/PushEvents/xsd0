@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2017 sp2 (x64) (http://www.altova.com) by Juara P. Manahan (DHL INFORMATION SERVICES) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ns1="http://www.dhl.com/PeP/SAPEventsPushResp/v1" xmlns="http://www.dhl.com/PeP/SAPEventsPushResp/v1" xmlns:RESP_STATUS="http://www.dhl.com/PeP/CM/ResponseStatus/v1" xmlns:altova="http://www.altova.com/xml-schema-extensions" targetNamespace="http://www.dhl.com/PeP/SAPEventsPushResp/v1" version="1.0">
+	<xs:import namespace="http://www.dhl.com/PeP/CM/ResponseStatus/v1" schemaLocation="PepSAPIntegrationV2.EventsPush.PushEvents?xsd=xsd1"/>
+	<xs:complexType name="SAPEventsPushResponseMsgType">
+		<xs:annotation>
+			<xs:documentation>SAPEventsPush response message type</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Hdr">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="MessageType">
+							<xs:annotation>
+								<xs:documentation>SAPEVENTSNOTIFY</xs:documentation>
+							</xs:annotation>
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:minLength value="1"/>
+									<xs:maxLength value="50"/>
+									<xs:whiteSpace value="collapse"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+						<xs:element name="MessageDateTime" type="xs:dateTime">
+							<xs:annotation>
+								<xs:documentation>Date and time expressed in UTC.
+
+Complete date plus hours, minutes, seconds and local time offset to UTC:
+      YYYY-MM-DDThh:mm:ssZ (eg 1997-07-16T19:20:30 +08:00)
+
+where:
+
+     YYYY = four-digit year
+     MM   = two-digit month (01=January, etc.)
+     DD   = two-digit day of month (01 through 31)
+     hh   = two digits of hour (00 through 23) (am/pm NOT allowed)
+     mm   = two digits of minute (00 through 59)
+     ss   = two digits of second (00 through 59)
+     Z  = local time zone offset to UTC</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="MessageID" type="xs:string"/>
+						<xs:element name="CorrId" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>Message ID from  request message -
+
+ This will serve as correlation id between the request and response pair.</xs:documentation>
+							</xs:annotation>
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:minLength value="1"/>
+									<xs:maxLength value="50"/>
+									<xs:whiteSpace value="collapse"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+						<xs:element name="MessageVersion">
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:minLength value="1"/>
+									<xs:maxLength value="5"/>
+									<xs:whiteSpace value="collapse"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Bd">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="SAPEvent" type="RESP_STATUS:SAPEventResponse" maxOccurs="unbounded"/>
+						<xs:element name="ResponseStatus">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="StatusCode"/>
+									<xs:element name="StatusMessage">
+										<xs:simpleType>
+											<xs:restriction base="xs:string">
+												<xs:minLength value="1"/>
+												<xs:maxLength value="300"/>
+												<xs:whiteSpace value="collapse"/>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:element>
+									<xs:element name="StatusMessageDetails">
+										<xs:simpleType>
+											<xs:restriction base="xs:string">
+												<xs:minLength value="1"/>
+												<xs:maxLength value="500"/>
+												<xs:whiteSpace value="collapse"/>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="SAPEventsPushResponseMsg" type="ns1:SAPEventsPushResponseMsgType">
+		<xs:annotation>
+			<xs:documentation>SAPEventsPush Response Message</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+</xs:schema>

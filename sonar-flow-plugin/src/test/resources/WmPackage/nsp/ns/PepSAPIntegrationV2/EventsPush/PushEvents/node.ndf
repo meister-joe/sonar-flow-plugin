@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Values version="2.0">
+  <value name="node_type">webServiceDescriptor</value>
+  <value name="node_nsName">PepSAPIntegrationV2.EventsPush:PushEvents</value>
+  <value name="node_pkg">PepSAPIntegrationV2</value>
+  <value name="is_public">false</value>
+  <Boolean name="inbound">true</Boolean>
+  <Boolean name="WSICompliant">false</Boolean>
+  <value name="SOAPProtocol">SOAP 1.1 Protocol</value>
+  <value name="targetNamespace">http://www.dhl.com/PeP/SAPEventsPush</value>
+  <Boolean name="attachmentEnabled">false</Boolean>
+  <number name="mtomThreshold" type="Integer">0</number>
+  <array name="externalWSDLSources" type="record" depth="1">
+    <record javaclass="com.wm.util.Values">
+      <value name="contextURI">http://localhost:5555/</value>
+      <value name="locationURI">PepSAPIntegrationV2.EventsPush.PushEvents?wsdl=wsdl0</value>
+      <null name="source"/>
+      <number name="type" type="Integer">1</number>
+    </record>
+    <record javaclass="com.wm.util.Values">
+      <value name="contextURI">http://localhost:5555/</value>
+      <value name="locationURI">PepSAPIntegrationV2.EventsPush.PushEvents?xsd=xsd0</value>
+      <null name="source"/>
+      <number name="type" type="Integer">2</number>
+    </record>
+    <record javaclass="com.wm.util.Values">
+      <value name="contextURI">http://localhost:5555/</value>
+      <value name="locationURI">PepSAPIntegrationV2.EventsPush.PushEvents?xsd=xsd1</value>
+      <null name="source"/>
+      <number name="type" type="Integer">2</number>
+    </record>
+    <record javaclass="com.wm.util.Values">
+      <value name="contextURI">http://localhost:5555/</value>
+      <value name="locationURI">PepSAPIntegrationV2.EventsPush.PushEvents?xsd=xsd2</value>
+      <null name="source"/>
+      <number name="type" type="Integer">2</number>
+    </record>
+  </array>
+  <value name="externalWSDLURL">file:/C:/Projekt/PeP/Dev/2017/3.4/SAP/SAPPushEvents/SAPPushEvents/PushSAPEventsWSDL.wsdl</value>
+  <value name="WSDLURL">http://mykullstc000127.apis.dhl.com:5555/ws/PepSAPIntegrationV2.EventsPush:PushEvents?WSDL</value>
+  <value name="definitionName">PushEvents</value>
+  <value name="version">_9_7</value>
+  <value name="schemaDomain">e44ecfe4b066852815b27f83998</value>
+  <Boolean name="rawArray">true</Boolean>
+  <array name="handlerList" type="record" depth="1">
+  </array>
+  <array name="binderList" type="record" depth="1">
+    <record javaclass="com.wm.util.Values">
+      <value name="binderName">SAPEventsPushBinding</value>
+      <value name="bindingName">SAPEventsPushBinding</value>
+      <value name="bindingStyle">document</value>
+      <value name="bindingUse">literal</value>
+      <value name="bindingType">SOAP</value>
+      <value name="portName">SAPEventsPushPort</value>
+      <value name="portTypeName">SAPEventsPushPort</value>
+      <value name="bindingTransport">http://schemas.xmlsoap.org/soap/http</value>
+      <value name="transportType">http</value>
+      <record name="operationMap" javaclass="com.wm.util.Values">
+        <value name="sapEventsPush">sapEventsPush</value>
+      </record>
+      <value name="SOAPProtocol">SOAP 1.1 Protocol</value>
+      <value name="SOAPDirective">ws</value>
+      <Boolean name="useCSQ">false</Boolean>
+    </record>
+  </array>
+  <array name="operationList" type="record" depth="1">
+    <record javaclass="com.wm.util.Values">
+      <value name="operationName">sapEventsPush</value>
+      <value name="serviceName">PepSAPIntegrationV2.EventsPush.PushEvents_.services:sapEventsPush</value>
+      <value name="originalMEPType">MEP_URI_IN_OUT</value>
+      <record name="requestElement" javaclass="com.wm.util.Values">
+        <array name="headers" type="record" depth="1">
+        </array>
+        <record name="body" javaclass="com.wm.util.Values">
+          <value name="name">http://www.dhl.com/PeP/SAPEventsPush:SAPEventsPushPort_sapEventsPush_Input</value>
+          <value name="docType">PepSAPIntegrationV2.EventsPush.PushEvents_.docTypes:SAPEventsPushPort_sapEventsPush_Input</value>
+          <value name="nsOwner">PepSAPIntegrationV2.EventsPush.PushEvents_.docTypes:SAPEventsPushPort_sapEventsPush_Input</value>
+          <number name="nsOwnerType" type="Integer">3</number>
+          <Boolean name="addedByClient">false</Boolean>
+          <null name="originalDocName"/>
+        </record>
+        <array name="faults" type="record" depth="1">
+        </array>
+      </record>
+      <record name="responseElement" javaclass="com.wm.util.Values">
+        <array name="headers" type="record" depth="1">
+        </array>
+        <record name="body" javaclass="com.wm.util.Values">
+          <value name="name">http://www.dhl.com/PeP/SAPEventsPush:SAPEventsPushPort_sapEventsPush_Output</value>
+          <value name="docType">PepSAPIntegrationV2.EventsPush.PushEvents_.docTypes:SAPEventsPushPort_sapEventsPush_Output</value>
+          <value name="nsOwner">PepSAPIntegrationV2.EventsPush.PushEvents_.docTypes:SAPEventsPushPort_sapEventsPush_Output</value>
+          <number name="nsOwnerType" type="Integer">3</number>
+          <Boolean name="addedByClient">false</Boolean>
+          <null name="originalDocName"/>
+        </record>
+        <array name="faults" type="record" depth="1">
+        </array>
+      </record>
+    </record>
+  </array>
+  <record name="namespaces" javaclass="com.wm.util.Values">
+    <value name="wsdl">http://schemas.xmlsoap.org/wsdl/</value>
+    <value name="mime">http://schemas.xmlsoap.org/wsdl/mime/</value>
+    <value name="tns">http://www.dhl.com/PeP/SAPEventsPush</value>
+    <value name="http">http://schemas.xmlsoap.org/wsdl/http/</value>
+    <value name="xs">http://www.w3.org/2001/XMLSchema</value>
+    <value name="soap">http://schemas.xmlsoap.org/wsdl/soap/</value>
+    <value name="soapenc">http://schemas.xmlsoap.org/soap/encoding/</value>
+    <value name="xsi">http://www.w3.org/2001/XMLSchema-instance</value>
+  </record>
+  <Boolean name="HeadersInPipelineEnabled">false</Boolean>
+  <Boolean name="validateSOAPResponse">true</Boolean>
+  <Boolean name="validateSchemaUsingXerces">true</Boolean>
+  <Boolean name="enableCompatibility">false</Boolean>
+  <record name="userDefinedURIReferencePrefixes" javaclass="com.wm.util.Values">
+    <value name="http://www.dhl.com/PeP/PePSAPEventsPush/v1">eventsPush</value>
+    <value name="http://www.dhl.com/PeP/CM/ResponseStatus/v1">RESP_STATUS</value>
+    <value name="http://www.dhl.com/PeP/SAPEventsPush">tns</value>
+    <value name="http://www.dhl.com/PeP/SAPEventsPushResp/v1">eventsPushResp</value>
+  </record>
+  <Boolean name="registerDoctypes">true</Boolean>
+  <Boolean name="allTypes">false</Boolean>
+  <Boolean name="generateXOPObjectForBase64Binary">false</Boolean>
+  <value name="originURI">file://C:\Projekt\PeP\Dev\2017\3.4\SAP\SAPPushEvents\SAPPushEvents\PushSAPEventsWSDL.wsdl</value>
+  <value name="modifiable">false</value>
+  <Boolean name="omitXSDAny">true</Boolean>
+  <value name="externalServiceName">{http://www.dhl.com/PeP/SAPEventsPush}sapEventsPush</value>
+  <null name="policyAttachmentList"/>
+  <Boolean name="filterLoginCredentials">false</Boolean>
+</Values>

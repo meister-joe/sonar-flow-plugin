@@ -29,9 +29,11 @@ import be.i8c.codequality.sonar.plugins.sag.webmethods.flow.check.CheckList;
 
 public class FlowProfile extends ProfileDefinition {
 
+	@SuppressWarnings("deprecation")
 	private final RuleFinder ruleFinder;
 
-	  public FlowProfile(RuleFinder ruleFinder) {
+	  @SuppressWarnings("deprecation")
+	public FlowProfile(RuleFinder ruleFinder) {
 	    this.ruleFinder = ruleFinder;
 	  }
 

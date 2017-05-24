@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2017 sp2 (x64) (http://www.altova.com) by Juara P. Manahan (DHL INFORMATION SERVICES) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ns="http://www.dhl.com/PeP/CM/ResponseStatus/v1" xmlns="http://www.dhl.com/PeP/CM/ResponseStatus/v1" targetNamespace="http://www.dhl.com/PeP/CM/ResponseStatus/v1">
+	<xs:complexType name="SAPEventResponse">
+		<xs:annotation>
+			<xs:documentation>Generic Response Status</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Event">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:minLength value="1"/>
+						<xs:maxLength value="50"/>
+						<xs:whiteSpace value="collapse"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="SoldToAccount" type="xs:string"/>
+			<xs:element name="InvoiceNumber" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Invoice Number</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="AttributeChanged" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Attribute to change</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:whiteSpace value="collapse"/>
+						<xs:minLength value="1"/>
+						<xs:maxLength value="25"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="StatusCode">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:minLength value="1"/>
+						<xs:maxLength value="10"/>
+						<xs:whiteSpace value="collapse"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="StatusMessage">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:minLength value="1"/>
+						<xs:maxLength value="300"/>
+						<xs:whiteSpace value="collapse"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="StatusMessageDetails">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:minLength value="1"/>
+						<xs:maxLength value="500"/>
+						<xs:whiteSpace value="collapse"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

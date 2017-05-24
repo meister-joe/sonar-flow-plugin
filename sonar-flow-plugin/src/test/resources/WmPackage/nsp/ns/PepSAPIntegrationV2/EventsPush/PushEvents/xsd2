@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2017 sp2 (x64) (http://www.altova.com) by Juara P. Manahan (DHL INFORMATION SERVICES) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.dhl.com/PeP/SAPEventsPush" xmlns:ns1="http://www.dhl.com/PeP/SAPEventsPush/v1" xmlns:altova="http://www.altova.com/xml-schema-extensions" xmlns:ns2="http://www.dhl.com/PeP/PePSAPEventsPush/v1" targetNamespace="http://www.dhl.com/PeP/PePSAPEventsPush/v1" version="1.0">
+	<xs:complexType name="SAPEventsPushMsgType">
+		<xs:annotation>
+			<xs:documentation>SAP Events Push message type</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Hdr">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="MessageType">
+							<xs:annotation>
+								<xs:documentation>SAPEVENTSNOTIFY</xs:documentation>
+							</xs:annotation>
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:minLength value="1"/>
+									<xs:maxLength value="50"/>
+									<xs:whiteSpace value="preserve"/>
+									<xs:enumeration value="SAPEVENTSNOTIFY"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+						<xs:element name="MessageDateTime" type="xs:dateTime">
+							<xs:annotation>
+								<xs:documentation>Date and time expressed in UTC.
+
+Complete date plus hours, minutes, seconds and local time offset to UTC:
+      YYYY-MM-DDThh:mm:ssZ (eg 1997-07-16T19:20:30 +08:00)
+
+where:
+
+     YYYY = four-digit year
+     MM   = two-digit month (01=January, etc.)
+     DD   = two-digit day of month (01 through 31)
+      T    = Literal T
+     HH   = two digits of hour (00 through 23) (am/pm NOT allowed)
+     mm   = two digits of minute (00 through 59)
+     ss   = two digits of second (00 through 59)
+     Z  = local time zone offset to UTC</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="MessageID">
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:minLength value="1"/>
+									<xs:maxLength value="50"/>
+									<xs:whiteSpace value="collapse"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+						<xs:element name="MessageVersion">
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:minLength value="1"/>
+									<xs:maxLength value="5"/>
+									<xs:whiteSpace value="collapse"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Bd">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="SAPEvents" maxOccurs="unbounded">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="Event">
+										<xs:simpleType>
+											<xs:restriction base="xs:string">
+												<xs:minLength value="1"/>
+												<xs:maxLength value="50"/>
+												<xs:whiteSpace value="collapse"/>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:element>
+									<xs:element name="SoldToAccount" type="xs:string"/>
+									<xs:element name="InvoiceNumber" type="xs:string" minOccurs="0">
+										<xs:annotation>
+											<xs:documentation>Invoice Number</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="InvoiceAmount" minOccurs="0">
+										<xs:annotation>
+											<xs:documentation>Invoice Amount</xs:documentation>
+											<xs:appinfo>
+												<altova:exampleValues>
+													<altova:example value="99999999.99"/>
+												</altova:exampleValues>
+											</xs:appinfo>
+										</xs:annotation>
+										<xs:simpleType>
+											<xs:restriction base="xs:decimal">
+												<xs:totalDigits value="10"/>
+												<xs:fractionDigits value="2"/>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:element>
+									<xs:element name="InvoiceCurrency" minOccurs="0">
+										<xs:annotation>
+											<xs:documentation>Invoice Currency</xs:documentation>
+										</xs:annotation>
+										<xs:simpleType>
+											<xs:restriction base="xs:string">
+												<xs:whiteSpace value="collapse"/>
+												<xs:minLength value="1"/>
+												<xs:maxLength value="5"/>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:element>
+									<xs:element name="InvoiceDate" type="xs:dateTime" minOccurs="0">
+										<xs:annotation>
+											<xs:documentation>Invoice Date</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="InvoiceCountry" minOccurs="0">
+										<xs:annotation>
+											<xs:documentation>Invoice Country</xs:documentation>
+										</xs:annotation>
+										<xs:simpleType>
+											<xs:restriction base="xs:string">
+												<xs:whiteSpace value="collapse"/>
+												<xs:minLength value="1"/>
+												<xs:maxLength value="5"/>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:element>
+									<xs:element name="Barcode" minOccurs="0">
+										<xs:annotation>
+											<xs:documentation>Barcode</xs:documentation>
+										</xs:annotation>
+										<xs:simpleType>
+											<xs:restriction base="xs:string">
+												<xs:whiteSpace value="collapse"/>
+												<xs:minLength value="1"/>
+												<xs:maxLength value="5"/>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:element>
+									<xs:element name="AttributeChanged" minOccurs="0">
+										<xs:annotation>
+											<xs:documentation>Attribute to change</xs:documentation>
+										</xs:annotation>
+										<xs:simpleType>
+											<xs:restriction base="xs:string">
+												<xs:whiteSpace value="collapse"/>
+												<xs:minLength value="1"/>
+												<xs:maxLength value="5"/>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:element>
+									<xs:element name="AttributeNewValue" minOccurs="0">
+										<xs:annotation>
+											<xs:documentation>Attribute new value</xs:documentation>
+										</xs:annotation>
+										<xs:simpleType>
+											<xs:restriction base="xs:string">
+												<xs:whiteSpace value="collapse"/>
+												<xs:minLength value="1"/>
+												<xs:maxLength value="5"/>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="SAPEventsPushMsg" type="ns2:SAPEventsPushMsgType">
+		<xs:annotation>
+			<xs:documentation>SAP Events Push message</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+</xs:schema>

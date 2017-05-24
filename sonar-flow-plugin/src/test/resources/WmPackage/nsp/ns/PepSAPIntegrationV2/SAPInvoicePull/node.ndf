@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Values version="2.0">
+  <value name="node_type">webServiceDescriptor</value>
+  <value name="node_nsName">PepSAPIntegrationV2:SAPInvoicePull</value>
+  <value name="node_pkg">PepSAPIntegrationV2</value>
+  <value name="is_public">false</value>
+  <Boolean name="inbound">false</Boolean>
+  <Boolean name="WSICompliant">false</Boolean>
+  <value name="SOAPProtocol">SOAP 1.1 Protocol</value>
+  <value name="targetNamespace">http://dhlglobalmail.com/XI/CPGM</value>
+  <Boolean name="attachmentEnabled">false</Boolean>
+  <number name="mtomThreshold" type="Integer">0</number>
+  <array name="externalWSDLSources" type="record" depth="1">
+    <record javaclass="com.wm.util.Values">
+      <value name="contextURI">http://localhost:5555/</value>
+      <value name="locationURI">PepSAPIntegrationV2.SAPInvoicePull?wsdl=wsdl0</value>
+      <null name="source"/>
+      <number name="type" type="Integer">1</number>
+    </record>
+  </array>
+  <value name="externalWSDLURL">file:/C:/Projekt/PeP/Dev/2017/3.4/SAP/MI_Retrieve_Invoice.wsdl</value>
+  <value name="WSDLURL">http://mykullstc000127.apis.dhl.com:5555/ws/PepSAPIntegrationV2:SAPInvoicePull?WSDL</value>
+  <value name="definitionName">MI_Retrieve_Invoice</value>
+  <value name="version">_9_7</value>
+  <value name="schemaDomain">c37b7f1378ed39a115b0a57b629</value>
+  <Boolean name="rawArray">true</Boolean>
+  <array name="handlerList" type="record" depth="1">
+  </array>
+  <array name="binderList" type="record" depth="1">
+    <record javaclass="com.wm.util.Values">
+      <value name="binderName">MI_Retrieve_InvoiceBinding</value>
+      <value name="portAddress">http://mykullstc000127.apis.dhl.com:5555/</value>
+      <value name="bindingName">MI_Retrieve_InvoiceBinding</value>
+      <value name="bindingStyle">document</value>
+      <value name="bindingUse">literal</value>
+      <value name="bindingType">SOAP</value>
+      <value name="portName">PepSAPIntegrationV2_SAPInvoicePull_Port</value>
+      <value name="portTypeName">MI_Retrieve_Invoice</value>
+      <value name="bindingTransport">http://schemas.xmlsoap.org/soap/http</value>
+      <value name="transportType">http</value>
+      <record name="operationMap" javaclass="com.wm.util.Values">
+        <value name="http://sap.com/xi/WebService/soap1.1">MI_Retrieve_Invoice</value>
+      </record>
+      <value name="SOAPProtocol">SOAP 1.1 Protocol</value>
+      <value name="SOAPDirective">ws</value>
+      <Boolean name="useCSQ">false</Boolean>
+    </record>
+  </array>
+  <array name="operationList" type="record" depth="1">
+    <record javaclass="com.wm.util.Values">
+      <value name="operationName">MI_Retrieve_Invoice</value>
+      <value name="serviceName">PepSAPIntegrationV2.SAPInvoicePull_.connectors:MI_Retrieve_Invoice_MI_Retrieve_Invoice</value>
+      <value name="originalMEPType">MEP_URI_IN_OUT</value>
+      <record name="requestElement" javaclass="com.wm.util.Values">
+        <array name="headers" type="record" depth="1">
+        </array>
+        <record name="body" javaclass="com.wm.util.Values">
+          <value name="name">http://dhlglobalmail.com/XI/CPGM:MI_Retrieve_Invoice_MI_Retrieve_Invoice_Input</value>
+          <value name="docType">PepSAPIntegrationV2.SAPInvoicePull_.docTypes:MI_Retrieve_Invoice_MI_Retrieve_Invoice_Input</value>
+          <value name="nsOwner">PepSAPIntegrationV2.SAPInvoicePull_.docTypes:MI_Retrieve_Invoice_MI_Retrieve_Invoice_Input</value>
+          <number name="nsOwnerType" type="Integer">3</number>
+          <Boolean name="addedByClient">false</Boolean>
+          <null name="originalDocName"/>
+        </record>
+        <array name="faults" type="record" depth="1">
+        </array>
+      </record>
+      <record name="responseElement" javaclass="com.wm.util.Values">
+        <array name="headers" type="record" depth="1">
+        </array>
+        <record name="body" javaclass="com.wm.util.Values">
+          <value name="name">http://dhlglobalmail.com/XI/CPGM:MI_Retrieve_Invoice_MI_Retrieve_Invoice_Output</value>
+          <value name="docType">PepSAPIntegrationV2.SAPInvoicePull_.docTypes:MI_Retrieve_Invoice_MI_Retrieve_Invoice_Output</value>
+          <value name="nsOwner">PepSAPIntegrationV2.SAPInvoicePull_.docTypes:MI_Retrieve_Invoice_MI_Retrieve_Invoice_Output</value>
+          <number name="nsOwnerType" type="Integer">3</number>
+          <Boolean name="addedByClient">false</Boolean>
+          <null name="originalDocName"/>
+        </record>
+        <array name="faults" type="record" depth="1">
+          <record javaclass="com.wm.util.Values">
+            <value name="name">FT_RetrieveInvoice</value>
+            <value name="docType">PepSAPIntegrationV2.SAPInvoicePull_.docTypes:FT_RetrieveInvoice</value>
+            <value name="nsOwner">PepSAPIntegrationV2.SAPInvoicePull_.docTypes:FT_RetrieveInvoice</value>
+            <number name="nsOwnerType" type="Integer">3</number>
+            <Boolean name="addedByClient">false</Boolean>
+          </record>
+        </array>
+      </record>
+    </record>
+  </array>
+  <record name="namespaces" javaclass="com.wm.util.Values">
+    <value name="p1">http://dhlglobalmail.com/XI/CPGM</value>
+    <value name="wsdl">http://schemas.xmlsoap.org/wsdl/</value>
+    <value name="wsp">http://schemas.xmlsoap.org/ws/2004/09/policy</value>
+    <value name="wsu">http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd</value>
+    <value name="soap">http://schemas.xmlsoap.org/wsdl/soap/</value>
+  </record>
+  <Boolean name="HeadersInPipelineEnabled">false</Boolean>
+  <Boolean name="validateSOAPResponse">true</Boolean>
+  <Boolean name="validateSchemaUsingXerces">true</Boolean>
+  <Boolean name="enableCompatibility">false</Boolean>
+  <record name="userDefinedURIReferencePrefixes" javaclass="com.wm.util.Values">
+    <value name="http://dhlglobalmail.com/XI/CPGM">ns</value>
+  </record>
+  <Boolean name="registerDoctypes">true</Boolean>
+  <Boolean name="allTypes">false</Boolean>
+  <Boolean name="generateXOPObjectForBase64Binary">false</Boolean>
+  <value name="originURI">file://C:\Projekt\PeP\Dev\2017\3.4\SAP\MI_Retrieve_Invoice.wsdl</value>
+  <value name="modifiable">false</value>
+  <Boolean name="omitXSDAny">true</Boolean>
+  <value name="externalServiceName">{http://dhlglobalmail.com/XI/CPGM}PepSAPIntegrationV2_SAPInvoicePull</value>
+  <null name="policyAttachmentList"/>
+  <Boolean name="filterLoginCredentials">false</Boolean>
+</Values>

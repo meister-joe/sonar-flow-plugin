@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Values version="2.0">
+  <record name="record" javaclass="com.wm.util.Values">
+    <value name="node_type">record</value>
+    <value name="node_nsName">PepSAPIntegrationV2.EventsPush.PushEvents_.docTypes:SAPEventsPushPort_sapEventsPush_Output</value>
+    <value name="node_pkg">PepSAPIntegrationV2</value>
+    <value name="is_public">false</value>
+    <value name="field_type">record</value>
+    <value name="field_dim">0</value>
+    <value name="nillable">true</value>
+    <value name="form_qualified">false</value>
+    <value name="is_global">false</value>
+    <array name="rec_fields" type="record" depth="1">
+      <record javaclass="com.wm.util.Values">
+        <value name="node_type">record</value>
+        <value name="is_public">false</value>
+        <value name="field_name">tns:SAPEventsPushResponse</value>
+        <value name="field_type">record</value>
+        <value name="field_dim">0</value>
+        <value name="field_opt">true</value>
+        <value name="nillable">false</value>
+        <value name="field_xmlns">http://www.dhl.com/PeP/SAPEventsPush</value>
+        <value name="form_qualified">false</value>
+        <value name="is_global">false</value>
+        <array name="rec_fields" type="record" depth="1">
+          <record javaclass="com.wm.util.Values">
+            <value name="node_type">record</value>
+            <value name="is_public">false</value>
+            <value name="field_name">eventsPushResp:SAPEventsPushResponseMsg</value>
+            <value name="field_type">recref</value>
+            <value name="field_dim">0</value>
+            <value name="nillable">false</value>
+            <value name="field_xmlns">http://www.dhl.com/PeP/SAPEventsPushResp/v1</value>
+            <value name="form_qualified">false</value>
+            <value name="is_global">true</value>
+            <value name="rec_closed">true</value>
+            <value name="modifiable">true</value>
+            <value name="rec_ref">PepSAPIntegrationV2.EventsPush.PushEvents_.docTypes:docTypeRef_eventsPushResp_SAPEventsPushResponseMsgType</value>
+          </record>
+        </array>
+        <value name="rec_closed">true</value>
+        <value name="modifiable">true</value>
+      </record>
+    </array>
+    <value name="schemaDomain">e44ecfe4b066852815b27f83998</value>
+    <value name="originURI">file://C:\Projekt\PeP\Dev\2017\3.4\SAP\SAPPushEvents\SAPPushEvents\PushSAPEventsWSDL.wsdl</value>
+    <value name="modifiable">false</value>
+  </record>
+</Values>

@@ -39,10 +39,10 @@ import be.i8c.codequality.sonar.plugins.sag.webmethods.flow.sslr.FlowGrammar;
 import be.i8c.codequality.sonar.plugins.sag.webmethods.flow.sslr.FlowLexer.FlowAttTypes;
 
 @Rule(key="S00007",name = "Interface should not contain empty map steps.", 
-		priority = Priority.MINOR, tags = {Tags.DEBUG_CODE, Tags.BAD_PRACTICE})
+		priority = Priority.INFO, tags = {Tags.DEBUG_CODE, Tags.BAD_PRACTICE})
 @ActivatedByDefault
 @SqaleSubCharacteristic(RulesDefinition.SubCharacteristics.LOGIC_RELIABILITY)
-@SqaleConstantRemediation("2min")
+@SqaleConstantRemediation("1min")
 public class EmptyMapCheck extends SquidCheck<Grammar>{
 
 	final static Logger logger = LoggerFactory.getLogger(EmptyMapCheck.class);
@@ -64,10 +64,14 @@ public class EmptyMapCheck extends SquidCheck<Grammar>{
 				if (child.getTokenOriginalValue().equalsIgnoreCase("INVOKEINPUT")
 						|| child.getTokenOriginalValue().equalsIgnoreCase("INVOKEOUTPUT")
 						|| child.getTokenOriginalValue().equalsIgnoreCase("MAPDELETE")
-						|| child.getTokenOriginalValue().equalsIgnoreCase("MAPCOPY")) {
-					logger.debug("++ This is not an empty map ++");
+						|| child.getTokenOriginalValue().equalsIgnoreCase("MAPCOPY")
+						|| child.getTokenOriginalValue().equalsIgnoreCase("MAPTARGET")
+						|| child.getTokenOriginalValue().equalsIgnoreCase("MAPSET")) {
+					logger.debug("++ This is not an empty map ++" + child.getTokenOriginalValue());
 					isEmptyMap = false;
+					logger.debug("A Child is " + child.getTokenOriginalValue());
 				}
+				logger.debug("B Child is " + child.getTokenOriginalValue());
 			}
 			if (isEmptyMap) {
 				logger.debug("++ This map step in the flow is empty, create content or remove the map. ++");

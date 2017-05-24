@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="MI_Retrieve_Invoice" targetNamespace="http://dhlglobalmail.com/XI/CPGM" xmlns:p1="http://dhlglobalmail.com/XI/CPGM" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+<wsdl:documentation/>
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://dhlglobalmail.com/XI/CPGM" xmlns="http://dhlglobalmail.com/XI/CPGM" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><xsd:element name="MT_RetrInvoice_Response" type="RetrInvoiceResponse"/><xsd:element name="MT_RetrInvoice_Request" type="RetrInvoiceRequest"/><xsd:element name="FT_RetrieveInvoice"><xsd:complexType><xsd:sequence><xsd:element name="standard" type="ExchangeFaultData"/></xsd:sequence></xsd:complexType></xsd:element><xsd:complexType name="RetrInvoiceRequest"><xsd:annotation><xsd:documentation xml:lang="DE">Request zur Anzeige einer Rechnung</xsd:documentation></xsd:annotation><xsd:sequence><xsd:element name="customerId"><xsd:simpleType><xsd:restriction base="xsd:string"><xsd:minLength value="0"/><xsd:maxLength value="10"/></xsd:restriction></xsd:simpleType></xsd:element><xsd:element name="invoiceNo"><xsd:simpleType><xsd:restriction base="xsd:string"><xsd:minLength value="0"/><xsd:maxLength value="10"/></xsd:restriction></xsd:simpleType></xsd:element></xsd:sequence></xsd:complexType><xsd:complexType name="ExchangeFaultData"><xsd:sequence><xsd:element name="faultText" type="xsd:string"/><xsd:element minOccurs="0" name="faultUrl" type="xsd:string"/><xsd:element maxOccurs="unbounded" minOccurs="0" name="faultDetail" type="ExchangeLogData"/></xsd:sequence></xsd:complexType><xsd:complexType name="ExchangeLogData"><xsd:sequence><xsd:element minOccurs="0" name="severity" type="xsd:string"/><xsd:element name="text" type="xsd:string"/><xsd:element minOccurs="0" name="url" type="xsd:string"/><xsd:element minOccurs="0" name="id" type="xsd:string"/></xsd:sequence></xsd:complexType><xsd:complexType name="RetrInvoiceResponse"><xsd:annotation><xsd:documentation xml:lang="DE">Antwort auf Retrieve Invoice</xsd:documentation></xsd:annotation><xsd:sequence><xsd:element name="invoiceNo"><xsd:simpleType><xsd:restriction base="xsd:string"><xsd:minLength value="0"/><xsd:maxLength value="10"/></xsd:restriction></xsd:simpleType></xsd:element><xsd:element name="Document" type="xsd:base64Binary"/><xsd:element name="returnCode" type="xsd:integer"/><xsd:element name="returnText"><xsd:simpleType><xsd:restriction base="xsd:string"><xsd:minLength value="0"/><xsd:maxLength value="60"/></xsd:restriction></xsd:simpleType></xsd:element></xsd:sequence></xsd:complexType></xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="MT_RetrInvoice_Request">
+<wsdl:documentation>Request zur Anzeige von Rechnungen</wsdl:documentation>
+    <wsdl:part name="MT_RetrInvoice_Request" element="p1:MT_RetrInvoice_Request">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="FT_RetrieveInvoice">
+<wsdl:documentation>Fehler bei Anfordmerung Rechnung</wsdl:documentation>
+    <wsdl:part name="FT_RetrieveInvoice" element="p1:FT_RetrieveInvoice">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="MT_RetrInvoice_Response">
+<wsdl:documentation>Antwort auf Dokument anfordern</wsdl:documentation>
+    <wsdl:part name="MT_RetrInvoice_Response" element="p1:MT_RetrInvoice_Response">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="MI_Retrieve_Invoice">
+<wsdl:documentation/>
+    <wsdl:operation name="MI_Retrieve_Invoice">
+<wsdl:documentation/>
+      <wsdl:input message="p1:MT_RetrInvoice_Request">
+    </wsdl:input>
+      <wsdl:output message="p1:MT_RetrInvoice_Response">
+    </wsdl:output>
+      <wsdl:fault name="FT_RetrieveInvoice" message="p1:FT_RetrieveInvoice">
+    </wsdl:fault>
+    <wsp:Policy><wsp:PolicyReference URI="#OP_MI_Retrieve_Invoice"/></wsp:Policy>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="MI_Retrieve_InvoiceBinding" type="p1:MI_Retrieve_Invoice">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="MI_Retrieve_Invoice">
+      <soap:operation soapAction="http://sap.com/xi/WebService/soap1.1"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="FT_RetrieveInvoice">
+        <soap:fault name="FT_RetrieveInvoice" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="PepSAPIntegrationV2_SAPInvoicePull">
+    <wsdl:port name="PepSAPIntegrationV2_SAPInvoicePull_Port" binding="p1:MI_Retrieve_InvoiceBinding">
+      <soap:address location="http://mykullstc000127.apis.dhl.com:5555/"/>
+    </wsdl:port>
+  </wsdl:service>
+    <wsp:UsingPolicy wsdl:required="true"/>
+    <wsp:Policy wsu:Id="OP_MI_Retrieve_Invoice"/>
+</wsdl:definitions>

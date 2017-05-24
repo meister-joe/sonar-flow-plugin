@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2017 sp2 (x64) (http://www.altova.com) by Juara P. Manahan (DHL INFORMATION SERVICES) -->
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tns="http://www.dhl.com/PeP/SAPEventsPush" targetNamespace="http://www.dhl.com/PeP/SAPEventsPush">
+	<wsdl:types>
+		<xs:schema xmlns:eventsPush="http://www.dhl.com/PeP/PePSAPEventsPush/v1" xmlns:eventsPushResp="http://www.dhl.com/PeP/SAPEventsPushResp/v1" targetNamespace="http://www.dhl.com/PeP/SAPEventsPush">
+			<xs:import namespace="http://www.dhl.com/PeP/PePSAPEventsPush/v1" schemaLocation="PepSAPIntegrationV2.EventsPush.PushEvents?xsd=xsd2"/>
+			<xs:import namespace="http://www.dhl.com/PeP/SAPEventsPushResp/v1" schemaLocation="PepSAPIntegrationV2.EventsPush.PushEvents?xsd=xsd0"/>
+			<xs:element name="SAPEventsPushRequest">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="eventsPush:SAPEventsPushMsg"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="SAPEventsPushResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="eventsPushResp:SAPEventsPushResponseMsg"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:schema>
+	</wsdl:types>
+	<wsdl:message name="SAPEventsPushReq">
+		<wsdl:part name="parameter" element="tns:SAPEventsPushRequest"/>
+	</wsdl:message>
+	<wsdl:message name="SAPEventsPushResp">
+		<wsdl:part name="parameter" element="tns:SAPEventsPushResponse"/>
+	</wsdl:message>
+	<wsdl:portType name="SAPEventsPushPort">
+		<wsdl:operation name="sapEventsPush">
+			<wsdl:input message="tns:SAPEventsPushReq"/>
+			<wsdl:output message="tns:SAPEventsPushResp"/>
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="SAPEventsPushBinding" type="tns:SAPEventsPushPort">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<wsdl:operation name="sapEventsPush">
+			<soap:operation soapAction="sapEventsPush"/>
+			<wsdl:input>
+				<soap:body parts="parameter" use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body parts="parameter" use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="sapEventsPush">
+		<wsdl:port name="SAPEventsPushPort" binding="tns:SAPEventsPushBinding">
+			<soap:address location="http://mykullstc000127.apis.dhl.com:5555/soap"/>
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>
